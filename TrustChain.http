@@ -1,0 +1,6 @@
+@TrustChain_HostAddress = http://localhost:5074
+
+GET {{TrustChain_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
