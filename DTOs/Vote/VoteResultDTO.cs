@@ -7,7 +7,7 @@ public class VoteResultDto
     public string Party { get; set; } = string.Empty;
     public string PhotoUrl { get; set; } = string.Empty;
     public string PartyLogoUrl { get; set; } = string.Empty;
-    public string StateOfOrigin { get; set; } = string.Empty;
+
     public int TotalVotes { get; set; }
     public double Percentage { get; set; }
     public bool IsLeading { get; set; }

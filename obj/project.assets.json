@@ -226,6 +226,19 @@
           }
         }
       },
+      "Resend/0.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Resend.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Resend.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/10.1.5": {
         "type": "package",
         "dependencies": {
@@ -863,6 +876,21 @@
         "microsoft.openapi.nuspec"
       ]
     },
+    "Resend/0.2.2": {
+      "sha512": "ShD+CpKtgBCTLGeJfyf/ivQP8mcm6BMcjSf64DqJ9nGsXNvBseIorpaK4KtFiJc6/IBXD5DWjJedusWP86zLuQ==",
+      "type": "package",
+      "path": "resend/0.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net8.0/Resend.dll",
+        "lib/net8.0/Resend.xml",
+        "resend.0.2.2.nupkg.sha512",
+        "resend.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/10.1.5": {
       "sha512": "/eNk9z/8quXhDX14o3XLbwAX/84uIWSbiUD7cI/UrQnoBMOiyAtzKxNEJUtf/TyxjFpcXxE9FAfLvtbNpxHBSg==",
       "type": "package",
@@ -974,6 +1002,7 @@
       "Microsoft.AspNetCore.OpenApi >= 10.0.3",
       "Microsoft.EntityFrameworkCore >= 10.0.3",
       "Microsoft.EntityFrameworkCore.InMemory >= 10.0.3",
+      "Resend >= 0.2.2",
       "Swashbuckle.AspNetCore >= 10.1.5",
       "System.IdentityModel.Tokens.Jwt >= 8.16.0"
     ]
@@ -1040,6 +1069,10 @@
           "Microsoft.EntityFrameworkCore.InMemory": {
             "target": "Package",
             "version": "[10.0.3, )"
+          },
+          "Resend": {
+            "target": "Package",
+            "version": "[0.2.2, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

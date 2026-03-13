@@ -98,7 +98,7 @@ public class VoteService : IVoteService
                 Party = candidate.Party.ToString(),
                 PhotoUrl = candidate.PhotoUrl,
                 PartyLogoUrl = candidate.PartyLogoUrl,
-                StateOfOrigin = candidate.StateOfOrigin,
+               
                 TotalVotes = candidateVotes,
                 Percentage = totalVotes == 0 ? 0 :
                     Math.Round((double)candidateVotes / totalVotes * 100, 1)

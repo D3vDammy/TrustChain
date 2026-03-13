@@ -46,7 +46,7 @@ public class AdminService : IAdminService
              FirstName = dto.FirstName ?? string.Empty,              
              Party = Enum.Parse<PoliticalParty>(dto.Party ?? "Other"),
              PartyLogoUrl = dto.PartyLogoUrl ?? string.Empty,
-             StateOfOrigin = dto.StateOfOrigin ?? string.Empty,    
+           
              Manifesto = dto.Manifesto ?? string.Empty,         
              ElectionId = election.Id,
         };
@@ -93,7 +93,7 @@ public class AdminService : IAdminService
                 v.LastName,
                 v.NIN,
                 v.PhoneNumber,
-                v.StateOfOrigin,
+              
                 v.HasVoted,
                 v.IsVerified,
                

@@ -46,3 +46,5 @@ C:\Users\damil\TrustChain\obj\Debug\net10.0\refint\TrustChain.dll
 C:\Users\damil\TrustChain\obj\Debug\net10.0\TrustChain.pdb
 C:\Users\damil\TrustChain\obj\Debug\net10.0\TrustChain.genruntimeconfig.cache
 C:\Users\damil\TrustChain\obj\Debug\net10.0\ref\TrustChain.dll
+C:\Users\damil\TrustChain\bin\Debug\net10.0\Resend.dll
+C:\Users\damil\TrustChain\obj\Debug\net10.0\TrustChain.sourcelink.json

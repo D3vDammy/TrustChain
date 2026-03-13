@@ -9,11 +9,13 @@ public class Voter                                          // ← Voter not Vot
 
     // Filled from registration form
     public string NIN { get; set; } = string.Empty;
+
+    public string Email { get; set; } = string.Empty;
     public string FirstName { get; set; } = string.Empty;  
     public string LastName { get; set; } = string.Empty;   
     public string PhoneNumber { get; set; } = string.Empty; 
     public string StateOfOrigin { get; set; } = string.Empty;
-    public Gender Gender { get; set; }                     // ← enum not string
+            // ← enum not string
 
    
     // OTP Verification

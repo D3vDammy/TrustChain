@@ -11,7 +11,7 @@ public class Candidate
     public PoliticalParty Party { get; set; }        
     public string PartyLogoUrl { get; set; } = string.Empty;
     public string PhotoUrl { get; set; } = string.Empty;
-    public string StateOfOrigin { get; set; } = string.Empty;
+    
     public string Manifesto { get; set; } = string.Empty;
 
     // Foreign key to Election

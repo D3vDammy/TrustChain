@@ -28,7 +28,7 @@ public class CandidateService : ICandidateService
                 Party = c.Party.ToString(),
               
                 PartyLogoUrl = c.PartyLogoUrl,
-                StateOfOrigin = c.StateOfOrigin,
+                
                 Manifesto = c.Manifesto
             })
             .ToListAsync();
@@ -49,7 +49,7 @@ public class CandidateService : ICandidateService
             LastName = candidate.LastName,
             Party = candidate.Party.ToString(),
           PartyLogoUrl = candidate.PartyLogoUrl,
-            StateOfOrigin = candidate.StateOfOrigin,
+            
             Manifesto = candidate.Manifesto
         };
     }

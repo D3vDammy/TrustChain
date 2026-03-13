@@ -1,7 +1,7 @@
-
 using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Resend;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using TrustChain.Data;
 using TrustChain.Hubs;
@@ -58,7 +58,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddCors(opt => opt.AddPolicy("AllowFrontend", p =>
     p.WithOrigins(
         "http://localhost:3000",
-        "http://localhost:5173",
+        "http://localhost:5074 ",
         "http://localhost:4200"
     )
     .AllowAnyMethod()
@@ -68,6 +68,16 @@ builder.Services.AddCors(opt => opt.AddPolicy("AllowFrontend", p =>
 
 // ── CONTROLLERS 
 builder.Services.AddControllers();
+
+
+// ── RESEND EMAIL SERVICE
+builder.Services.AddOptions();
+builder.Services.AddHttpClient<ResendClient>();
+builder.Services.Configure<ResendClientOptions>(o =>
+{
+    o.ApiToken = builder.Configuration["Resend:ApiToken"]!;
+});
+builder.Services.AddTransient<IResend, ResendClient>();
 
 // ── SWAGGER
 builder.Services.AddOpenApi();
