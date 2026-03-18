@@ -20,10 +20,17 @@ public class AdminService : IAdminService
     // Create Election
     public async Task<string> CreateElectionAsync(ElectionDto dto)
     {
+        // ✅ Safe enum parsing instead of Enum.Parse which throws on bad input
+        if (!Enum.TryParse<ElectionType>(dto.Type, ignoreCase: true, out var electionType))
+        {
+            throw new ArgumentException($"Invalid election type: '{dto.Type}'. " +
+                $"Valid values are: {string.Join(", ", Enum.GetNames<ElectionType>())}");
+        }
+
         var election = new Election
         {
             Title = dto.Title,
-            Type = Enum.Parse<ElectionType>(dto.Type),
+            Type = electionType,
             Status = ElectionStatus.Upcoming,
             StartTime = dto.StartTime,
             EndTime = dto.EndTime
@@ -35,7 +42,7 @@ public class AdminService : IAdminService
         return "Election created successfully.";
     }
 
-    // Add Candidate 
+    // Add Candidate
     public async Task<string> AddCandidateAsync(CandidateDto dto)
     {
         var election = await _db.Elections.FindAsync(dto.Id)
@@ -43,12 +50,11 @@ public class AdminService : IAdminService
 
         var candidate = new Candidate
         {
-             FirstName = dto.FirstName ?? string.Empty,              
-             Party = Enum.Parse<PoliticalParty>(dto.Party ?? "Other"),
-             PartyLogoUrl = dto.PartyLogoUrl ?? string.Empty,
-           
-             Manifesto = dto.Manifesto ?? string.Empty,         
-             ElectionId = election.Id,
+            FirstName = dto.FirstName ?? string.Empty,
+            Party = Enum.Parse<PoliticalParty>(dto.Party ?? "Other"),
+            PartyLogoUrl = dto.PartyLogoUrl ?? string.Empty,
+            Manifesto = dto.Manifesto ?? string.Empty,
+            ElectionId = election.Id,
         };
 
         _db.Candidates.Add(candidate);
@@ -57,7 +63,7 @@ public class AdminService : IAdminService
         return "Candidate added successfully.";
     }
 
-    // Activate Election 
+    // Activate Election
     public async Task<string> ActivateElectionAsync(int id)
     {
         var election = await _db.Elections.FindAsync(id)
@@ -69,7 +75,7 @@ public class AdminService : IAdminService
         return "Election is now active.";
     }
 
-    //  Close Election 
+    // Close Election
     public async Task<string> CloseElectionAsync(int id)
     {
         var election = await _db.Elections.FindAsync(id)
@@ -81,11 +87,10 @@ public class AdminService : IAdminService
         return "Election has been closed.";
     }
 
-    //  Get All Voters 
+    // Get All Voters
     public async Task<object> GetAllVotersAsync()
     {
         var voters = await _db.Voters
-          
             .Select(v => new
             {
                 v.Id,
@@ -93,17 +98,15 @@ public class AdminService : IAdminService
                 v.LastName,
                 v.NIN,
                 v.PhoneNumber,
-              
                 v.HasVoted,
                 v.IsVerified,
-               
             })
             .ToListAsync();
 
         return voters;
     }
 
-    // Get Stats 
+    // Get Stats
     public async Task<object> GetStatsAsync(int electionId)
     {
         var totalVoters = await _db.Voters.CountAsync();
@@ -121,6 +124,4 @@ public class AdminService : IAdminService
                 Math.Round((double)totalVoted / totalVoters * 100, 1)
         };
     }
-
-   
 }
