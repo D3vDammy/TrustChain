@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrustChain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4466f860015db212ae04e869af8601ccf7c0f3de")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f12f1958e6f3f1397fad3bb7549bdd495b0ed1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrustChain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrustChain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
