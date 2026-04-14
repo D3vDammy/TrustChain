@@ -8,6 +8,8 @@ namespace TrustChain.Services.Interfaces;
 
 public interface IAuthService
 {
+    
+    Task<string> VoterLoginAsync(VoterLoginDto dto);
     Task<string> RegisterAsync(RegisterRequestDto dto);
     Task<string> SendOtpAsync(SendOtpDto dto);
     Task<LoginResponseDto> VerifyOtpAsync(VerifyOtpDto dto);

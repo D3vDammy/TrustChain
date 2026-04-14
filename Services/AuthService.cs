@@ -183,4 +183,22 @@ public class AuthService : IAuthService
         var masked = name.Length <= 2 ? name : name[..2] + "****";
         return $"{masked}@{domain}";
     }
+  
+//  Voter Login — sends OTP to email
+public async Task<string> VoterLoginAsync(VoterLoginDto dto)
+{
+    var voter = await _db.Voters
+        .FirstOrDefaultAsync(v => v.NIN == dto.NIN
+                           && v.Email == dto.Email);
+
+    if (voter == null)
+        throw new Exception("Voter not found. Please register first.");
+
+    // Reuse SendOtp logic
+    return await SendOtpAsync(new SendOtpDto
+    {
+        NIN = dto.NIN,
+        Email = dto.Email
+    });
+}
 }

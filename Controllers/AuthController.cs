@@ -36,4 +36,11 @@ public class AuthController : ControllerBase
     {
         return Ok(await _authService.VerifyOtpAsync(dto));
     }
+
+    [HttpPost("login")]
+public async Task<IActionResult> Login([FromBody] VoterLoginDto dto)
+{
+    return Ok(await _authService.VoterLoginAsync(dto));
+}
+
 }

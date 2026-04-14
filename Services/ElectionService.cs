@@ -11,7 +11,6 @@ namespace TrustChain.Services;
 
 public class ElectionService : IElectionService
 {
-
     private readonly AppDbContext _db;
 
     public ElectionService(AppDbContext db)
@@ -22,7 +21,7 @@ public class ElectionService : IElectionService
     public async Task<ElectionDto?> GetActiveElectionAsync()
     {
         var election = await _db.Elections
-            .Include(e => e.Candidates)
+            .Include(e => e.Candidates)       
             .FirstOrDefaultAsync(e => e.Status == ElectionStatus.Active);
 
         if (election == null) return null;
@@ -33,7 +32,7 @@ public class ElectionService : IElectionService
     public async Task<List<ElectionDto>> GetAllElectionsAsync()
     {
         var elections = await _db.Elections
-            .Include(e => e.Candidates)
+            .Include(e => e.Candidates)      
             .ToListAsync();
 
         return elections.Select(MapToDto).ToList();
@@ -54,9 +53,8 @@ public class ElectionService : IElectionService
             LastName = c.LastName,
             Party = c.Party.ToString(),
             PartyLogoUrl = c.PartyLogoUrl,
-            
             Manifesto = c.Manifesto
-        }).ToList()
+        }).ToList()                         
     };
 
     public Task CreateElectionAsync(ElectionDto electionDto)
