@@ -28,22 +28,43 @@ public class AdminController : ControllerBase
     [HttpPost("candidate")]
     public async Task<IActionResult> AddCandidate([FromBody] CandidateDto dto)
     {
-        var message = await _adminService.AddCandidateAsync(dto);
-        return Ok(new { success = true, message });
+        try
+        {
+            var message = await _adminService.AddCandidateAsync(dto);
+            return Ok(new { success = true, message });
+        }
+        catch (Exception ex) when (ex.Message == "Election not found.")
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
     }
 
     [HttpPut("election/{id:int}/activate")]
     public async Task<IActionResult> ActivateElection(int id)
     {
-        var message = await _adminService.ActivateElectionAsync(id);
-        return Ok(new { success = true, message });
+        try
+        {
+            var message = await _adminService.ActivateElectionAsync(id);
+            return Ok(new { success = true, message });
+        }
+        catch (Exception ex) when (ex.Message == "Election not found.")
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
     }
 
     [HttpPut("election/{id:int}/close")]
     public async Task<IActionResult> CloseElection(int id)
     {
-        var message = await _adminService.CloseElectionAsync(id);
-        return Ok(new { success = true, message });
+        try
+        {
+            var message = await _adminService.CloseElectionAsync(id);
+            return Ok(new { success = true, message });
+        }
+        catch (Exception ex) when (ex.Message == "Election not found.")
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
     }
 
     [HttpGet("voters")]

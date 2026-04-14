@@ -29,7 +29,8 @@ public class CandidateService : ICandidateService
               
                 PartyLogoUrl = c.PartyLogoUrl,
                 
-                Manifesto = c.Manifesto
+                Manifesto = c.Manifesto,
+                ElectionId = c.ElectionId
             })
             .ToListAsync();
 
@@ -50,7 +51,8 @@ public class CandidateService : ICandidateService
             Party = candidate.Party.ToString(),
           PartyLogoUrl = candidate.PartyLogoUrl,
             
-            Manifesto = candidate.Manifesto
+            Manifesto = candidate.Manifesto,
+            ElectionId = candidate.ElectionId
         };
     }
 }

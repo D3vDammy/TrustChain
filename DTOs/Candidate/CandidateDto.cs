@@ -12,4 +12,5 @@ public class CandidateDto
     public string? PartyLogoUrl { get; set; }
     public string? Manifesto { get; set; } = string.Empty;
     public string? ElectionType { get; set; }
+    public int ElectionId { get; set; }
 }

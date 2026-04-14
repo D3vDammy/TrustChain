@@ -53,7 +53,8 @@ public class ElectionService : IElectionService
             LastName = c.LastName,
             Party = c.Party.ToString(),
             PartyLogoUrl = c.PartyLogoUrl,
-            Manifesto = c.Manifesto
+            Manifesto = c.Manifesto,
+            ElectionId = c.ElectionId
         }).ToList()                         
     };
 

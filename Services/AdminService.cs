@@ -45,7 +45,7 @@ public class AdminService : IAdminService
     // Add Candidate
     public async Task<string> AddCandidateAsync(CandidateDto dto)
     {
-        var election = await _db.Elections.FindAsync(dto.Id)
+        var election = await _db.Elections.FindAsync(dto.ElectionId)
             ?? throw new Exception("Election not found.");
 
         var candidate = new Candidate
